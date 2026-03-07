@@ -1,10 +1,10 @@
  <div class="main-wrapper">
-   
+
       <h1 style="color:darkorange; padding-right: 1200px;">Tomato</h1>
 
       <div class="menu">
         <ul>
-          <li><a href="#home">HOME</a></li>
+          <li><a href="/">HOME</a></li>
           <li><a href="#about">ABOUT</a></li>
           <li><a href="#menu">MENU</a></li>
           <li><a href="#mobile">MOBILE</a></li>
@@ -18,8 +18,14 @@
   </a>
   <a href="/cart">
     <i class="fa fa-shopping-cart cart-icon"></i>
+    {{#if cartCount}}
+    <span class="cart-count">{{cartCount}}</span>
+    {{/if}}
   </a>
 </div>
 
-
+{{#if user}}
+<a href="/logout" class="signin">logout</a>
+{{else}}
 <a href="/login" class="signin">login</a>
+{{/if}}

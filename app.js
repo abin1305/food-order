@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('express-handlebars');
+const fileUpload = require('express-fileupload');
 
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
@@ -24,6 +25,9 @@ app.engine('hbs', hbs.engine({
    helpers: {
     eq: function (a, b) {
       return a === b;
+    },
+    multiply: function (a, b) {
+      return a * b;
     }
   }
 }));
@@ -33,6 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 app.use(session({
   secret: 'yourSecretKey',   // 🔐 Replace with your own secret

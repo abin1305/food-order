@@ -1,53 +1,58 @@
-
-
-    <style>th,td{
-  height: 60px;
-  width: 400px;
-  text-align: center;
- 
-}
-th{
- padding-top: 40px;
-}
-.editnote{
-  
-  display: inline-block; 
-  width: 100px;
-  height: 37px;
-  border-radius: 5px;
-  color: white;
-  background-color: blue;
-  text-align: center;
-  line-height: 37px; 
-  text-decoration: none; /* Optional: remove underline */
-
-}</style>
-    <table class="table">
-    <thead>
-      <tr>
-        <th>no</th>
-        <th>items</th>
-        <th>Title</th>
-        <th>price</th>
-        <th>quantity</th>
-        <th>total</th>
-        <th>remove</th>
-      </tr>
-    </thead>
-   
-    <tbody>
-     
-      <tr>
-        <td>1</td>
-        <td>salad</td>
-        <td>veg salad</td>
-        <td>Rs:100</td>
-        <td>1</td>
-        <td>Rs:100</td>
-        <td><a href="" class="editnote">&#215;</a></td>
-        
-      </tr>
-      
-    </tbody>
-    
-  </table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .dashboard-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .dashboard-link {
+            display: block;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .dashboard-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div class="dashboard-links">
+            <a href="/admin/products" class="dashboard-link">Manage Products</a>
+            <a href="/admin/add-product" class="dashboard-link">Add New Product</a>
+            <a href="/" class="dashboard-link">View Website</a>
+        </div>
+    </div>
+</body>
+</html>

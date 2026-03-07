@@ -47,6 +47,22 @@
       background-color: white;
     }
 
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #ff7200;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
     .image-container {
       position: relative;
       width: 1200px;
@@ -175,59 +191,112 @@ header {
 
         .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: auto;
+  width: 300px;
+  height: 420px;
+  margin: 15px;
   text-align: center;
   font-family: arial;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .price {
-  color: red;
-  font-size: 22px;
+  color: #ff5722;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
 }
-.fullcart{
-    display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 10px;
+
+.fullcart {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
 .plus-button {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: orange;
+  bottom: 15px;
+  right: 15px;
+  background-color: #ff5722;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
 }
 
+.plus-button:hover {
+  background-color: #e64a19;
+}
 
-
+.product-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
 
 .header-rating {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-       gap: 20px;
-    }
-     .fa-star {
-      font-size: 15px; /* size of stars */
-      color: #ccc;     /* uncolored (grey) by default */
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  gap: 10px;
+}
 
-    .checked {
-      color: #ff5722;   /* colored stars */
-    }
+.header-rating h1 {
+  font-size: 18px;
+  margin: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.rating {
+  display: flex;
+  gap: 2px;
+}
+
+.fa-star {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.checked {
+  color: #ff5722;
+}
+
+.card p {
+  padding: 0 15px;
+  margin: 5px 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+  color: #666;
+  line-height: 1.4;
+}
 
      body {
       margin: 0;
@@ -307,6 +376,70 @@ header {
         margin-bottom: 20px;
       }
     }
+
+/* Responsive design for product cards */
+@media (max-width: 768px) {
+  .card {
+    width: 280px;
+    height: 400px;
+    margin: 10px;
+  }
+
+  .fullcart {
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .product-card-img {
+    height: 180px;
+  }
+
+  .header-rating h1 {
+    font-size: 16px;
+  }
+
+  .plus-button {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
+    margin: 8px;
+  }
+
+  .fullcart {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .product-card-img {
+    height: 160px;
+  }
+
+  .header-rating {
+    padding: 10px;
+  }
+
+  .header-rating h1 {
+    font-size: 15px;
+  }
+
+  .card p {
+    padding: 0 10px;
+    -webkit-line-clamp: 2;
+  }
+
+  .card .price {
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+}
 .maut_button-appstore {
   padding: 15px 40px;
   background-color: #000;
