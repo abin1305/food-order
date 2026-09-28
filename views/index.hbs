@@ -1,335 +1,316 @@
-<style>
-  /* 
-    For better organization, it's best to move this CSS into a separate .css file.
-    I'm including it here to demonstrate the styling improvements.
-  */
-  .category-item a {
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.2s;
-  }
-  .category-item a:hover {
-    transform: scale(1.05);
-  }
-  .category-item-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%; /* A perfect circle */
-      padding: 20px;
-      object-fit: cover; /* Ensures image covers the area without distortion */
-  }
+<!-- HERO BANNER SECTION -->
+<section class="hero-banner" id="home">
+  <div class="hero-content-wrapper">
+    <div class="hero-text-side">
+      <div class="hero-badge">
+        <i class="fa-solid fa-fire-flame-curved"></i> Free Delivery on first order above Rs. 299
+      </div>
+      <h1 class="hero-title">Order Your Favorite <span class="gradient-text">Food Right Here</span></h1>
+      <p class="hero-subtitle">Discover handcrafted gourmet dishes, hot pizzas, fresh salads, and delectable desserts delivered straight to your doorstep in minutes.</p>
+      
+      <!-- Hero Action Buttons -->
+      <div class="hero-cta-buttons">
+        <a href="#menu" class="btn-primary-glow btn-lg">
+          <i class="fa-solid fa-utensils"></i> Explore Menu
+        </a>
+        <a href="/search" class="btn-secondary-dark btn-lg">
+          <i class="fa-solid fa-magnifying-glass"></i> Search Dishes
+        </a>
+      </div>
 
-  .product-card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-  }
-
-  .img-container .plus-button {
-      /* Making the button more prominent */
-      background-color: #ff5722;
-      color: white;
-  }
-
-  /* Styles for uniform product cards */
-  .fullcart {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      padding: 20px;
-  }
-
-  .card {
-      width: 300px;
-      height: 420px;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #eee;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      background-color: white;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  }
-
-  .card p {
-      flex-grow: 1;
-      overflow: hidden;
-      padding: 0 15px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      text-align: left;
-      color: #666;
-      line-height: 1.4;
-  }
-
-  .card .price {
-      padding: 15px;
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: #ff5722;
-      margin: 0;
-      text-align: center;
-  }
-
-  .product-card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-  }
-
-  .plus-button {
-      position: absolute;
-      bottom: 15px;
-      right: 15px;
-      background-color: #ff5722;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
-  }
-
-  .plus-button:hover {
-      background-color: #e64a19;
-  }
-
-  .header-rating {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-      gap: 10px;
-  }
-
-  .header-rating h1 {
-      font-size: 18px;
-      margin: 0;
-      flex: 1;
-      text-align: left;
-  }
-
-  .rating {
-      display: flex;
-      gap: 2px;
-  }
-
-  .fa-star {
-      font-size: 14px;
-      color: #ccc;
-  }
-
-  .checked {
-      color: #ff5722;
-  }
-</style>
-
-<header id="home">
-      <div class="image-container">
-        <img src="/product-images/pexels-ella-olsson-572949-1640777.jpg" alt="A large bowl of healthy and delicious salad">
-        <div class="overlay-text">
-          <h1>Order your<br>favorite food<br>here</h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, voluptatibus necessitatibus illum, nostrum
-            sed minima aperiam eius assumenda repudiandae illo labore. Obcaecati alias quo iusto vitae eum dolorem
-            accusantium sunt.</p>
-
-          <a href="#menu" class="sign">view menu</a>
+      <!-- Quick Trust Badges -->
+      <div class="hero-trust-badges">
+        <div class="trust-badge-item">
+          <div class="trust-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <strong>30 Mins</strong>
+            <span>Fast Delivery</span>
+          </div>
         </div>
-      </div>
-    </header>
-  <section id="about">
-  
-    <h2 style="text-align: center;">explore our more</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio facilis consectetur aperiam dolor, nam explicabo
-      recusandae! Non laboriosam ut unde enim incidunt ipsa repellat aliquam, dolor veritatis explicabo similique
-      voluptate.</p>
-
-
-
-
-
-
-    <div class="menu-container">
-      <div class="item category-item">
-        <a href="/products?category=Salad">
-          <img src="/product-images/pexels-iina-luoto-460132-1211887.jpg" alt="Salad category" class="category-item-img">
-          <div class="item-name">Salad</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Rolls">
-          <img src="/product-images/pexels-any-lane-5945771.jpg" alt="Rolls category" class="category-item-img">
-          <div class="item-name">Rolls</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Desserts">
-          <img src="/product-images/pexels-ash-craig-122861-376464.jpg" alt="Desserts category" class="category-item-img">
-          <div class="item-name">Desserts</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Sandwich">
-          <img src="/product-images/pexels-any-lane-5945771.jpg" alt="Sandwich category" class="category-item-img">
-          <div class="item-name">Sandwich</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Cake">
-          <img src="/product-images/istockphoto-1024561260-1024x1024.jpg" alt="Cake category" class="category-item-img">
-          <div class="item-name">Cake</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Pure Veg">
-          <img src="/product-images/pexels-valeriya-1199957.jpg" alt="Pure Veg category" class="category-item-img">
-          <div class="item-name">Pure Veg</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Pasta">
-          <img src="/product-images/pexels-vanmalidate-769289.jpg" alt="Pasta category" class="category-item-img">
-          <div class="item-name">Pasta</div>
-        </a>
-      </div>
-      <div class="item category-item">
-        <a href="/products?category=Noodles">
-          <img src="/product-images/pexels-xmtnguyen-699953.jpg" alt="Noodles category" class="category-item-img">
-          <div class="item-name">Noodles</div>
-        </a>
+        <div class="trust-badge-item">
+          <div class="trust-icon"><i class="fa-solid fa-leaf"></i></div>
+          <div>
+            <strong>100% Fresh</strong>
+            <span>Gourmet Quality</span>
+          </div>
+        </div>
+        <div class="trust-badge-item">
+          <div class="trust-icon"><i class="fa-solid fa-star"></i></div>
+          <div>
+            <strong>4.9 Stars</strong>
+            <span>15k+ Reviews</span>
+          </div>
+        </div>
       </div>
     </div>
-    <hr>
-  </section>
-  <section id="menu">
-    <h2 style="text-align: center;">top dishes near you</h2>
 
-    <div class="fullcart">
-      {{#each products}}
-      <div class="card">
-        <div class="img-container" style="position: relative;">
-          <img src="/product-images/{{this.image}}" alt="{{this.name}}" class="product-card-img">
-          {{#if ../user}}
-          <button class="plus-button" onclick="addToCart('{{this._id}}')" aria-label="Add {{this.name}} to cart">+</button>
-          {{/if}}
+    <div class="hero-image-side">
+      <div class="hero-image-card">
+        <img src="/product-images/pexels-ella-olsson-572949-1640777.jpg" alt="Delicious Food Salad Bowl" class="hero-main-img">
+        <div class="floating-promo-card card-top">
+          <i class="fa-solid fa-heart text-danger"></i>
+          <div>
+            <strong>Top Rated</strong>
+            <span>Greek Salad Special</span>
+          </div>
         </div>
-        <div class="header-rating">
-          <h1>{{this.name}}</h1>
-          <div class="rating">
-            <span class="fa fa-star checked"></span>
-            {{!-- Note: The rating appears static. This should be made dynamic based on product data. --}}
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+        <div class="floating-promo-card card-bottom">
+          <i class="fa-solid fa-clock text-warning"></i>
+          <div>
+            <strong>Avg Prep Time</strong>
+            <span>15 - 20 Minutes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY FILTER SECTION -->
+<section class="categories-section" id="categories">
+  <div class="section-header text-center">
+    <span class="subheading-tag">CRAVING SOMETHING?</span>
+    <h2 class="section-title">Explore Our Categories</h2>
+    <p class="section-desc">Choose from our curated selection of fresh salads, tasty wraps, mouth-watering desserts and sandwiches.</p>
+  </div>
+
+  <div class="categories-grid">
+    <a href="/?category=All#menu" class="category-card {{#if (eq selectedCategory 'All')}}active{{/if}}">
+      <div class="category-icon-wrapper">
+        <i class="fa-solid fa-border-all"></i>
+      </div>
+      <span class="category-name">All Items</span>
+    </a>
+    <a href="/?category=Salad#menu" class="category-card {{#if (eq selectedCategory 'Salad')}}active{{/if}}">
+      <div class="category-img-wrapper">
+        <img src="/product-images/pexels-iina-luoto-460132-1211887.jpg" alt="Salad">
+      </div>
+      <span class="category-name">Salad</span>
+    </a>
+    <a href="/?category=Rolls#menu" class="category-card {{#if (eq selectedCategory 'Rolls')}}active{{/if}}">
+      <div class="category-img-wrapper">
+        <img src="/product-images/pexels-any-lane-5945771.jpg" alt="Rolls">
+      </div>
+      <span class="category-name">Rolls</span>
+    </a>
+    <a href="/?category=Desserts#menu" class="category-card {{#if (eq selectedCategory 'Desserts')}}active{{/if}}">
+      <div class="category-img-wrapper">
+        <img src="/product-images/pexels-ash-craig-122861-376464.jpg" alt="Desserts">
+      </div>
+      <span class="category-name">Desserts</span>
+    </a>
+    <a href="/?category=Sandwich#menu" class="category-card {{#if (eq selectedCategory 'Sandwich')}}active{{/if}}">
+      <div class="category-img-wrapper">
+        <img src="/product-images/pexels-vanmalidate-769289.jpg" alt="Sandwich">
+      </div>
+      <span class="category-name">Sandwich</span>
+    </a>
+    <a href="/?category=Cake#menu" class="category-card {{#if (eq selectedCategory 'Cake')}}active{{/if}}">
+      <div class="category-img-wrapper">
+        <img src="/product-images/istockphoto-1024561260-1024x1024.jpg" alt="Cake">
+      </div>
+      <span class="category-name">Cake</span>
+    </a>
+    <a href="/?category=Pure Veg#menu" class="category-card {{#if (eq selectedCategory 'Pure Veg')}}active{{/if}}">
+      <div class="category-img-wrapper">
+        <img src="/product-images/pexels-valeriya-1199957.jpg" alt="Pure Veg">
+      </div>
+      <span class="category-name">Pure Veg</span>
+    </a>
+  </div>
+</section>
+
+<!-- MAIN PRODUCTS MENU SECTION -->
+<section class="menu-section" id="menu">
+  <div class="menu-container-header">
+    <div>
+      <span class="subheading-tag">POPULAR DISHES</span>
+      <h2 class="section-title">Top Dishes Near You {{#if selectedCategory}}({{selectedCategory}}){{/if}}</h2>
+    </div>
+
+    <!-- Quick Search Input inside Menu -->
+    <div class="menu-filter-search">
+      <form action="/" method="GET" class="search-form">
+        <input type="hidden" name="category" value="{{selectedCategory}}">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" name="search" placeholder="Filter dishes..." value="{{searchQuery}}" class="menu-search-input">
+        {{#if searchQuery}}
+          <a href="/" class="clear-search-btn" title="Clear Search"><i class="fa-solid fa-xmark"></i></a>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+
+  <div class="products-grid">
+    {{#if products.length}}
+      {{#each products}}
+      <div class="product-card">
+        <div class="product-image-container">
+          <img src="/product-images/{{this.image}}" alt="{{this.name}}" class="product-img" onerror="this.src='/product-images/pexels-ella-olsson-572949-1640777.jpg'">
+          <div class="product-badges">
+            {{#if this.isVeg}}
+              <span class="diet-badge veg-badge" title="100% Vegetarian">
+                <i class="fa-solid fa-leaf"></i> Veg
+              </span>
+            {{else}}
+              <span class="diet-badge nonveg-badge" title="Non-Vegetarian">
+                <i class="fa-solid fa-drumstick-bite"></i> Non-Veg
+              </span>
+            {{/if}}
+            <span class="category-tag-badge">{{this.category}}</span>
           </div>
         </div>
 
-        <p>{{this.description}}</p>
-        <p class="price">Rs:{{this.price}}</p>
-      </div>
-      {{/each}}
-    </div>
+        <div class="product-card-body">
+          <div class="product-title-row">
+            <h3 class="product-title">{{this.name}}</h3>
+            <div class="product-rating">
+              <i class="fa-solid fa-star text-warning"></i>
+              <span>{{#if this.rating}}{{this.rating}}{{else}}4.7{{/if}}</span>
+            </div>
+          </div>
 
-  </section>
-  <section id="mobile">
-    <h1 style="font-size: 50px;text-align: center;">for better experience download <br>tomato app</h1>
+          <p class="product-description">{{this.description}}</p>
 
+          <div class="product-meta-row">
+            <div class="price-container">
+              <span class="currency-symbol">Rs.</span>
+              <span class="price-amount">{{this.price}}</span>
+            </div>
+            <div class="prep-time">
+              <i class="fa-regular fa-clock"></i> {{#if this.prepTime}}{{this.prepTime}}{{else}}20-25 min{{/if}}
+            </div>
+          </div>
 
-
-
-
-    <div class="row">
-
-      <img class="maut_button-appstore-logo"
-        src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred.png"
-        alt="Get it on Google Play">
-      <img class="maut_button-appstore-logo"
-        src="https://lh3.googleusercontent.com/cjsqrWQKJQp9RFO7-hJ9AfpKzbUb_Y84vXfjlP0iRHBvladwAfXih984olktDhPnFqyZ0nu9A5jvFwOEQPXzv7hr3ce3QVsLN8kQ2Ao=s0"
-        alt="Get it on Google Play">
-
-    </div>
-  </section>
-  <section id="contact">
-    <footer class="footer">
-      <!-- Logo & Description -->
-      <div class="footer-section">
-        <div class="logo">Tomato</div>
-        <p>Nutritional Value: Food provides essential nutrients like carbohydrates, proteins, fats, vitamins, and
-          minerals, which are necessary for the body’s growth, repair, and maintenance.</p>
-        <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-         
+          <button class="btn-add-to-cart" onclick="addToCart('{{this._id}}', '{{this.name}}')">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
         </div>
       </div>
-
-      <!-- Company Links -->
-      <div class="footer-section">
-        <h3 style="color: #ff5722;">COMPANY</h3>
-        <a href="#">Home</a>
-        <a href="#">About us</a>
-        <a href="#">Delivery</a>
-        <a href="#">Privacy policy</a>
+      {{/each}}
+    {{else}}
+      <div class="no-products-found">
+        <div class="empty-icon"><i class="fa-solid fa-bowl-rice"></i></div>
+        <h3>No dishes found</h3>
+        <p>We couldn't find any dishes matching your search query or selected category.</p>
+        <a href="/" class="btn-primary-glow" style="margin-top: 15px; display: inline-block;">View All Menu Items</a>
       </div>
+    {{/if}}
+  </div>
+</section>
 
-      <!-- Contact Info -->
-      <div class="footer-section">
-        <h3 style="color: #ff5722;">GET IN TOUCH</h3>
-        <p>+9197929031xx</p>
-        <p>contact@foody.com</p>
+<!-- APP DOWNLOAD PROMO SECTION -->
+<section class="app-download-section" id="mobile">
+  <div class="app-download-card">
+    <div class="app-download-text">
+      <span class="subheading-tag text-light">GET THE MOBILE APP</span>
+      <h2>For A Better Experience, Download Tomato App</h2>
+      <p>Order seamlessly, track live delivery drivers, get exclusive discount coupons, and enjoy faster doorstep drop-offs on our iOS and Android mobile app!</p>
+      
+      <div class="app-store-badges">
+        <a href="#" class="store-badge-btn">
+          <i class="fa-brands fa-apple store-icon"></i>
+          <div>
+            <span class="store-subtext">Download on the</span>
+            <span class="store-title">App Store</span>
+          </div>
+        </a>
+        <a href="#" class="store-badge-btn">
+          <i class="fa-brands fa-google-play store-icon"></i>
+          <div>
+            <span class="store-subtext">GET IT ON</span>
+            <span class="store-title">Google Play</span>
+          </div>
+        </a>
       </div>
-    </footer>
+    </div>
+    
+    <div class="app-download-graphic">
+      <div class="phone-mockup">
+        <i class="fa-solid fa-mobile-screen-button mockup-bg-icon"></i>
+        <div class="mockup-screen-card">
+          <i class="fa-solid fa-utensils logo-icon-sm"></i>
+          <h4>Tomato Express</h4>
+          <p>Order Delivered in 24 mins!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </section>
+<!-- FOOTER SECTION -->
+<footer class="main-footer" id="contact">
+  <div class="footer-container">
+    <div class="footer-col brand-col">
+      <a href="/" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-utensils"></i></div>
+        <span class="logo-text text-light">Tomato<span class="logo-dot">.</span></span>
+      </a>
+      <p class="footer-brand-desc">Serving fresh, hot, gourmet meals crafted with love and delivered rapidly to your home. Quality food for every food lover.</p>
+      <div class="social-links">
+        <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
 
+    <div class="footer-col">
+      <h4 class="footer-col-title">COMPANY</h4>
+      <ul class="footer-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Delivery Options</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
 
+    <div class="footer-col">
+      <h4 class="footer-col-title">CATEGORIES</h4>
+      <ul class="footer-nav">
+        <li><a href="/?category=Salad#menu">Fresh Salads</a></li>
+        <li><a href="/?category=Rolls#menu">Wraps & Rolls</a></li>
+        <li><a href="/?category=Sandwich#menu">Club Sandwiches</a></li>
+        <li><a href="/?category=Desserts#menu">Desserts & Cakes</a></li>
+      </ul>
+    </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <div class="footer-col">
+      <h4 class="footer-col-title">GET IN TOUCH</h4>
+      <ul class="footer-contact-info">
+        <li><i class="fa-solid fa-phone"></i> +91 98765 43210</li>
+        <li><i class="fa-solid fa-envelope"></i> support@tomatofood.com</li>
+        <li><i class="fa-solid fa-location-dot"></i> 124 Gourmet Boulevard, Foodville</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Tomato Food Delivery. All rights reserved. Made with <i class="fa-solid fa-heart text-danger"></i></p>
+  </div>
+</footer>
+
 <script>
-function addToCart(productId) {
-    $.ajax({
-        url: '/add-to-cart/' + productId,
-        method: 'get',
-        success: (response) => {
-            if (response.status) {
-                // Assuming the response includes the new cart count, e.g., { status: true, cartCount: 3 }
-                let cartCountSpan = $('.cart-count');
-                if (cartCountSpan.length) {
-                    cartCountSpan.text(response.cartCount);
-                } else {
-                    // If cart was empty, the count span might not exist. We create it.
-                    $('a[href="/cart"]').append(`<span class="cart-count">${response.cartCount}</span>`);
-                }
-                // A simple notification. A more elegant "toast" notification would be even better!
-                alert('Product added to cart!');
-            } else {
-                // If user is not logged in, redirect to login page.
-                window.location.href = '/login';
-            }
-        },
-        error: () => {
-            alert('Sorry, something went wrong. Please try again.');
-        }
-    });
+function addToCart(productId, productName = 'Dish') {
+  $.ajax({
+    url: '/add-to-cart/' + productId,
+    method: 'GET',
+    success: (response) => {
+      if (response.status) {
+        $('#cartBadgeCount').text(response.cartCount).addClass('bounce');
+        setTimeout(() => $('#cartBadgeCount').removeClass('bounce'), 600);
+        showToast(`" ${productName} " added to your cart!`, 'success');
+      } else {
+        showToast('Please sign in to add items to your cart', 'error');
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 1200);
+      }
+    },
+    error: () => {
+      showToast('Unable to add product. Please try again.', 'error');
+    }
+  });
 }
 </script>

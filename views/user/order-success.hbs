@@ -1,0 +1,88 @@
+<div class="page-container order-success-page">
+  <div class="success-card">
+    <div class="success-icon-wrap">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    
+    <h2>Order Placed Successfully!</h2>
+    <p class="success-lead-text">Thank you, <strong>{{order.deliveryDetails.name}}</strong>! Your food order has been received and sent directly to our kitchen chef.</p>
+
+    <div class="order-id-badge">
+      <span>Order ID:</span> <strong>#{{order._id}}</strong>
+    </div>
+
+    <!-- Live Status Progress Bar -->
+    <div class="status-tracker-bar">
+      <div class="tracker-step step-done">
+        <div class="step-icon"><i class="fa-solid fa-receipt"></i></div>
+        <span>Placed</span>
+      </div>
+      <div class="tracker-step step-active">
+        <div class="step-icon"><i class="fa-solid fa-fire-burner"></i></div>
+        <span>Preparing</span>
+      </div>
+      <div class="tracker-step">
+        <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+        <span>On The Way</span>
+      </div>
+      <div class="tracker-step">
+        <div class="step-icon"><i class="fa-solid fa-house-chimney"></i></div>
+        <span>Delivered</span>
+      </div>
+    </div>
+
+    <div class="order-details-box">
+      <h3 class="box-title"><i class="fa-solid fa-file-invoice"></i> Order Receipt</h3>
+
+      <div class="details-grid">
+        <div>
+          <span class="detail-label">Delivery Address</span>
+          <p class="detail-val">{{order.deliveryDetails.address}}, {{order.deliveryDetails.city}} - {{order.deliveryDetails.pincode}}</p>
+          <p class="detail-val"><i class="fa-solid fa-phone"></i> {{order.deliveryDetails.mobile}}</p>
+        </div>
+
+        <div>
+          <span class="detail-label">Payment Mode</span>
+          <p class="detail-val"><strong>{{order.paymentMethod}}</strong> ({{order.status}})</p>
+          <span class="detail-label" style="margin-top: 10px;">Date & Time</span>
+          <p class="detail-val">{{order.date}} at {{order.time}}</p>
+        </div>
+      </div>
+
+      <div class="order-items-table-wrap">
+        <table class="order-items-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Qty</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each order.products}}
+            <tr>
+              <td>{{this.product.name}}</td>
+              <td>x{{this.quantity}}</td>
+              <td>Rs. {{multiply this.quantity this.product.price}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="order-total-banner">
+        <span>Total Paid / Payable</span>
+        <span class="total-price-tag">Rs. {{order.totalAmount}}</span>
+      </div>
+    </div>
+
+    <div class="success-actions">
+      <a href="/orders" class="btn-primary-glow btn-lg">
+        <i class="fa-solid fa-list-check"></i> View My Orders History
+      </a>
+      <a href="/" class="btn-secondary-dark btn-lg">
+        <i class="fa-solid fa-utensils"></i> Order More Dishes
+      </a>
+    </div>
+  </div>
+</div>

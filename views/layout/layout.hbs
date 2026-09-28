@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{title}}</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{#if title}}{{title}}{{else}}Tomato | Order Delicious Food Online{{/if}}</title>
 
+  <!-- Google Fonts: Outfit & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Toastify CSS for sleek alerts -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <!-- Application Main Stylesheet -->
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <!-- jQuery & Toastify JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body>
   {{#if admin}}
-        {{> admin-header}}
-    {{else}}
-        {{> user-header}}
-    {{/if}}
+    {{> admin-header}}
+  {{else}}
+    {{> user-header}}
+  {{/if}}
 
+  <main class="app-main-content">
     {{{body}}}
+  </main>
 
-  
+  <script>
+    // Universal Toast Notification Utility
+    function showToast(message, type = 'success') {
+      let bg = type === 'success' ? 'linear-gradient(to right, #10b981, #059669)' : 'linear-gradient(to right, #ef4444, #dc2626)';
+      Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+          background: bg,
+          borderRadius: "12px",
+          boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)",
+          fontSize: "14px",
+          fontWeight: "600",
+          fontFamily: "'Outfit', sans-serif",
+          padding: "12px 20px"
+        }
+      }).showToast();
+    }
+  </script>
 </body>
 </html>

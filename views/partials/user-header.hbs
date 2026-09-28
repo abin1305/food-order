@@ -1,31 +1,71 @@
- <div class="main-wrapper">
+<header class="navbar-wrapper">
+  <div class="navbar-container">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-utensils"></i>
+      </div>
+      <span class="logo-text">Tomato<span class="logo-dot">.</span></span>
+    </a>
 
-      <h1 style="color:darkorange; padding-right: 1200px;">Tomato</h1>
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="/" class="nav-link {{#unless selectedCategory}}active{{/unless}}">Home</a>
+      <a href="/#menu" class="nav-link">Menu</a>
+      <a href="/#categories" class="nav-link">Categories</a>
+      {{#if user}}
+        <a href="/orders" class="nav-link">My Orders</a>
+      {{/if}}
+      <a href="/#contact" class="nav-link">Contact</a>
+    </nav>
 
-      <div class="menu">
-        <ul>
-          <li><a href="/">HOME</a></li>
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#menu">MENU</a></li>
-          <li><a href="#mobile">MOBILE</a></li>
-          <li><a href="#contact">CONTACT</a></li>
-        </ul>
+    <!-- Search & Cart & Auth Controls -->
+    <div class="nav-actions">
+      <!-- Live Search Box -->
+      <div class="search-box-wrapper">
+        <form action="/search" method="GET" class="search-form">
+          <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+          <input type="text" name="q" placeholder="Search dishes..." autocomplete="off" class="header-search-input" value="{{query}}">
+          <button type="submit" class="search-submit-btn" aria-label="Search">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
       </div>
 
-    <div class="search">
-  <a href="/search">
-    <i class="fas fa-search search-icon"></i>
-  </a>
-  <a href="/cart">
-    <i class="fa fa-shopping-cart cart-icon"></i>
-    {{#if cartCount}}
-    <span class="cart-count">{{cartCount}}</span>
-    {{/if}}
-  </a>
-</div>
+      <!-- Cart Button -->
+      <a href="/cart" class="cart-btn" title="View Cart">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="cart-badge-count" id="cartBadgeCount">{{#if cartCount}}{{cartCount}}{{else}}0{{/if}}</span>
+      </a>
 
-{{#if user}}
-<a href="/logout" class="signin">logout</a>
-{{else}}
-<a href="/login" class="signin">login</a>
-{{/if}}
+      <!-- Auth Action -->
+      {{#if user}}
+        <div class="user-menu-dropdown">
+          <button class="user-profile-btn">
+            <div class="user-avatar-circle">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span class="user-name-text">{{user.name}}</span>
+            <i class="fa-solid fa-chevron-down dropdown-caret"></i>
+          </button>
+          <div class="dropdown-menu-card">
+            <a href="/orders" class="dropdown-item">
+              <i class="fa-solid fa-receipt"></i> My Orders
+            </a>
+            <a href="/cart" class="dropdown-item">
+              <i class="fa-solid fa-cart-shopping"></i> My Cart
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/logout" class="dropdown-item logout-item">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+          </div>
+        </div>
+      {{else}}
+        <a href="/login" class="btn-primary-glow btn-signin">
+          <i class="fa-solid fa-user"></i> Sign In
+        </a>
+      {{/if}}
+    </div>
+  </div>
+</header>

@@ -1,117 +1,57 @@
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: white;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Bordered form */
-    form {
-      border: 3px solid #f1f1f1;
-      background: white;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      width: 500px;
-    }
-
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #04AA6D;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    button:hover {
-      opacity: 0.8;
-    }
-
-    .cancelbtn {
-      width: auto;
-      padding: 10px 18px;
-      background-color: #f44336;
-    }
-
-    .container {
-      padding: 16px;
-    }
-
-    .bottom-container {
-      background-color: #f1f1f1;
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .bottom-container .links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .psw a {
-      color:#f44336;
-      text-decoration: none;
-    }
-
-    .psw a:hover {
-      text-decoration: underline;
-    }
-
-    @media screen and (max-width: 600px) {
-      form {
-        width: 90%;
-      }
-
-      .bottom-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        background-color: #f1f1f1;
-      }
-    }
-  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Tomato Food Delivery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body>
+<body class="auth-body-page">
+  <div class="auth-card-container">
+    <div class="auth-header">
+      <a href="/" class="brand-logo justify-center">
+        <div class="logo-icon"><i class="fa-solid fa-utensils"></i></div>
+        <span class="logo-text">Tomato<span class="logo-dot">.</span></span>
+      </a>
+      <h2>Join Tomato Food Today</h2>
+      <p>Create an account to start ordering fresh food in minutes!</p>
+    </div>
 
-<form action="/signup" method="post">
-  <div class="container">
-    <h1>sign up</h1>
-<input type="text" placeholder="Enter name" name="name" required>
-    <input type="text" placeholder="Enter email" name="email" required>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <form action="/signup" method="POST" class="auth-form">
+      <div class="form-group">
+        <label for="name"><i class="fa-solid fa-user"></i> Full Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
+      </div>
 
-    <button type="submit">create account</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> By continuing I agree to the terms and privacy policy
-    </label>
-  </div>
+      <div class="form-group">
+        <label for="email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+      </div>
 
-  <div class="bottom-container">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <div class="links">
-     
-      <span class="psw">already have an account? <a href="/login">login here</a></span>
+      <div class="form-group">
+        <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="4">
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" name="terms" required checked> I agree to the <a href="#" class="auth-link">Terms & Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary-glow btn-block btn-lg" style="margin-top: 20px;">
+        <i class="fa-solid fa-user-plus"></i> Create Account
+      </button>
+    </form>
+
+    <div class="auth-footer-links">
+      <p>Already have an account? <a href="/login" class="auth-link">Sign In</a></p>
+      <a href="/" class="back-home-link"><i class="fa-solid fa-arrow-left"></i> Back to Homepage</a>
     </div>
   </div>
-</form>
-
-
+</body>
+</html>

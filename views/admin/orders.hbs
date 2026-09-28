@@ -1,0 +1,88 @@
+<div class="page-container admin-orders-page">
+  <div class="admin-page-header">
+    <div>
+      <h2><i class="fa-solid fa-truck-fast text-primary"></i> Customer Orders Management</h2>
+      <p>Monitor incoming food orders and update live delivery status.</p>
+    </div>
+  </div>
+
+  <div class="admin-panel-card">
+    {{#if orders.length}}
+      <div class="table-responsive">
+        <table class="admin-data-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Date & Time</th>
+              <th>Customer Info</th>
+              <th>Items</th>
+              <th>Total Amount</th>
+              <th>Payment Mode</th>
+              <th>Status Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each orders}}
+            <tr>
+              <td><strong>#{{this._id}}</strong></td>
+              <td>{{this.date}}<br><span class="table-subtext">{{this.time}}</span></td>
+              <td>
+                <strong>{{this.deliveryDetails.name}}</strong>
+                <div class="table-subtext"><i class="fa-solid fa-phone"></i> {{this.deliveryDetails.mobile}}</div>
+                <div class="table-subtext"><i class="fa-solid fa-location-dot"></i> {{this.deliveryDetails.address}}, {{this.deliveryDetails.city}}</div>
+              </td>
+              <td>
+                <ul class="admin-order-items-list">
+                  {{#each this.products}}
+                    <li>{{this.product.name}} <strong>x{{this.quantity}}</strong></li>
+                  {{/each}}
+                </ul>
+              </td>
+              <td><strong>Rs. {{this.totalAmount}}</strong></td>
+              <td><span class="badge-payment">{{this.paymentMethod}}</span></td>
+              <td>
+                <select class="status-select-dropdown" onchange="updateOrderStatus('{{this._id}}', this.value)">
+                  <option value="Placed" {{#if (eq this.status 'Placed')}}selected{{/if}}>Placed</option>
+                  <option value="Preparing" {{#if (eq this.status 'Preparing')}}selected{{/if}}>Preparing</option>
+                  <option value="Out for Delivery" {{#if (eq this.status 'Out for Delivery')}}selected{{/if}}>Out for Delivery</option>
+                  <option value="Delivered" {{#if (eq this.status 'Delivered')}}selected{{/if}}>Delivered</option>
+                  <option value="Cancelled" {{#if (eq this.status 'Cancelled')}}selected{{/if}}>Cancelled</option>
+                </select>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    {{else}}
+      <div class="empty-orders-view p-40">
+        <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+        <h3>No Customer Orders Yet</h3>
+        <p>Orders placed by users will appear here automatically.</p>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<script>
+function updateOrderStatus(orderId, newStatus) {
+  $.ajax({
+    url: '/admin/update-order-status',
+    method: 'POST',
+    data: {
+      orderId: orderId,
+      status: newStatus
+    },
+    success: (res) => {
+      if (res.status) {
+        showToast(`Order #${orderId} status updated to "${newStatus}"`, 'success');
+      } else {
+        showToast('Failed to update status', 'error');
+      }
+    },
+    error: () => {
+      showToast('Server error updating order status', 'error');
+    }
+  });
+}
+</script>

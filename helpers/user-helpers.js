@@ -194,6 +194,63 @@ getTotalAmount: (userId) => {
             resolve(0);
         }
     });
+},
+
+placeOrder: (order, products, total) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let status = order.paymentMethod === 'COD' ? 'Placed' : 'Pending';
+            let orderObj = {
+                deliveryDetails: {
+                    name: order.name,
+                    mobile: order.mobile,
+                    address: order.address,
+                    pincode: order.pincode,
+                    city: order.city
+                },
+                userId: new ObjectId(order.userId),
+                paymentMethod: order.paymentMethod,
+                products: products,
+                totalAmount: total,
+                status: status,
+                createdAt: new Date(),
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+                time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+            };
+
+            const response = await db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj);
+            // Clear cart after placing order
+            await db.get().collection(collection.CART_COLLECTION).deleteOne({ user: new ObjectId(order.userId) });
+            resolve(response.insertedId);
+        } catch (err) {
+            reject(err);
+        }
+    });
+},
+
+getUserOrders: (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let orders = await db.get().collection(collection.ORDER_COLLECTION)
+                .find({ userId: new ObjectId(userId) })
+                .sort({ createdAt: -1 })
+                .toArray();
+            resolve(orders);
+        } catch (err) {
+            reject(err);
+        }
+    });
+},
+
+getOrderDetails: (orderId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let order = await db.get().collection(collection.ORDER_COLLECTION).findOne({ _id: new ObjectId(orderId) });
+            resolve(order);
+        } catch (err) {
+            reject(err);
+        }
+    });
 }
 
-}
+}

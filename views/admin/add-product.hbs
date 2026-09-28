@@ -1,85 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, textarea, select {
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Add New Product</h1>
-        <form action="/admin/add-product" method="post" enctype="multipart/form-data">
-            <label for="name">Product Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="category">Category:</label>
-            <select id="category" name="category" required>
-                <option value="">Select Category</option>
-                <option value="Salad">Salad</option>
-                <option value="Rolls">Rolls</option>
-                <option value="Desserts">Desserts</option>
-                <option value="Sandwich">Sandwich</option>
-            </select>
-
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="0.01" required>
-
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
-
-            <label for="image">Product Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-
-            <button type="submit">Add Product</button>
-        </form>
+<div class="page-container admin-form-page">
+  <div class="admin-page-header">
+    <div>
+      <h2><i class="fa-solid fa-plus-circle text-primary"></i> Add New Product</h2>
+      <p>Fill out the dish details to list it in the Tomato customer app.</p>
     </div>
-</body>
-</html>
+
+    <a href="/admin/products" class="btn-outline-custom">
+      <i class="fa-solid fa-arrow-left"></i> Back to Products
+    </a>
+  </div>
+
+  <div class="admin-panel-card max-width-700 margin-auto">
+    <form action="/admin/add-product" method="POST" enctype="multipart/form-data" class="admin-crud-form">
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="name">Dish Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Italian Margherita Pizza" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="Salad">Salad</option>
+            <option value="Rolls">Rolls</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Sandwich">Sandwich</option>
+            <option value="Cake">Cake</option>
+            <option value="Pure Veg">Pure Veg</option>
+            <option value="Pasta">Pasta</option>
+            <option value="Noodles">Noodles</option>
+            <option value="Burgers">Burgers</option>
+            <option value="Pizza">Pizza</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="price">Price (Rs.)</label>
+          <input type="number" id="price" name="price" step="1" placeholder="150" required>
+        </div>
+
+        <div class="form-group">
+          <label for="prepTime">Preparation Time</label>
+          <input type="text" id="prepTime" name="prepTime" placeholder="e.g. 15-20 min" value="20-25 min">
+        </div>
+      </div>
+
+      <div class="form-group-row">
+        <div class="form-group">
+          <label for="rating">Star Rating (1.0 to 5.0)</label>
+          <input type="number" id="rating" name="rating" step="0.1" min="1.0" max="5.0" value="4.8">
+        </div>
+
+        <div class="form-group">
+          <label for="isVeg">Dietary Type</label>
+          <select id="isVeg" name="isVeg">
+            <option value="true">Vegetarian (Veg)</option>
+            <option value="false">Non-Vegetarian (Non-Veg)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Short Description</label>
+        <textarea id="description" name="description" rows="3" placeholder="Describe ingredients, flavor profile, and serving size..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Dish Photo Image Upload</label>
+        <input type="file" id="image" name="image" accept="image/*" class="file-input-field" required onchange="previewImage(event)">
+        <div class="image-preview-container" style="margin-top: 10px;">
+          <img id="imgPreview" src="" alt="Preview" style="display: none; max-height: 150px; border-radius: 10px; border: 1px solid #ddd;">
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary-glow btn-block btn-lg" style="margin-top: 25px;">
+        <i class="fa-solid fa-plus-circle"></i> Save & Add Product
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+function previewImage(event) {
+  let reader = new FileReader();
+  reader.onload = function() {
+    let output = document.getElementById('imgPreview');
+    output.src = reader.result;
+    output.style.display = 'block';
+  };
+  if(event.target.files[0]) {
+    reader.readAsDataURL(event.target.files[0]);
+  }
+}
+</script>

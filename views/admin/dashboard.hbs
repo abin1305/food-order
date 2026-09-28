@@ -1,0 +1,114 @@
+<div class="page-container admin-dashboard-page">
+  <div class="admin-page-header">
+    <div>
+      <h2><i class="fa-solid fa-chart-pie text-primary"></i> Admin Dashboard</h2>
+      <p>System overview, live sales performance, and recent activity.</p>
+    </div>
+    
+    <a href="/admin/add-product" class="btn-primary-glow">
+      <i class="fa-solid fa-plus-circle"></i> Add New Product
+    </a>
+  </div>
+
+  <!-- Stats Grid Cards -->
+  <div class="stats-cards-grid">
+    <div class="stat-card revenue-card">
+      <div class="stat-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Total Revenue</span>
+        <h3 class="stat-value">Rs. {{stats.totalRevenue}}</h3>
+      </div>
+    </div>
+
+    <div class="stat-card orders-card">
+      <div class="stat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Total Orders</span>
+        <h3 class="stat-value">{{stats.totalOrders}}</h3>
+      </div>
+    </div>
+
+    <div class="stat-card products-card">
+      <div class="stat-icon"><i class="fa-solid fa-bowl-food"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Total Menu Items</span>
+        <h3 class="stat-value">{{stats.totalProducts}}</h3>
+      </div>
+    </div>
+
+    <div class="stat-card users-card">
+      <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Registered Customers</span>
+        <h3 class="stat-value">{{stats.totalUsers}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Orders & Products Section -->
+  <div class="admin-grid-two-col" style="margin-top: 35px;">
+    <!-- Recent Orders Table -->
+    <div class="admin-panel-card">
+      <div class="panel-header">
+        <h3><i class="fa-solid fa-receipt"></i> Recent Orders</h3>
+        <a href="/admin/orders" class="panel-link">View All</a>
+      </div>
+
+      {{#if orders.length}}
+        <div class="table-responsive">
+          <table class="admin-data-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each orders}}
+              <tr>
+                <td><strong>#{{this._id}}</strong></td>
+                <td>{{this.deliveryDetails.name}}</td>
+                <td>Rs. {{this.totalAmount}}</td>
+                <td>
+                  <span class="order-status-pill status-{{this.status}}">{{this.status}}</span>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      {{else}}
+        <p class="text-muted p-20">No customer orders placed yet.</p>
+      {{/if}}
+    </div>
+
+    <!-- Products Quick View -->
+    <div class="admin-panel-card">
+      <div class="panel-header">
+        <h3><i class="fa-solid fa-boxes-stacked"></i> Top Dishes</h3>
+        <a href="/admin/products" class="panel-link">Manage All</a>
+      </div>
+
+      {{#if products.length}}
+        <div class="admin-products-mini-list">
+          {{#each products}}
+          <div class="mini-product-item">
+            <img src="/product-images/{{this.image}}" alt="{{this.name}}" onerror="this.src='/product-images/pexels-ella-olsson-572949-1640777.jpg'">
+            <div class="mini-info">
+              <strong>{{this.name}}</strong>
+              <span>{{this.category}} &bull; Rs. {{this.price}}</span>
+            </div>
+            <a href="/admin/edit-product/{{this._id}}" class="btn-icon-edit" title="Edit">
+              <i class="fa-solid fa-pen"></i>
+            </a>
+          </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <p class="text-muted p-20">No products added yet.</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
